@@ -1,0 +1,7 @@
+Adhoc-commands
+===============
+create file
+#ansible all -m shell -a "touch /tmp/suri.txt"
+
+To move a file
+#ansible all -m shell -a "mv /tmp/suri.txt /home/"
