@@ -1,7 +1,36 @@
-Adhoc-commands
-===============
-create file
-#ansible all -m shell -a "touch /tmp/suri.txt"
+Creation of directory
+=====================
+ansible dev -m shell -a "mkdir /tmp/ram"
+ansible dev -m shell -a "mkdir -p /tmp/ram/sita/{luv,khush}"
 
-To move a file
-#ansible all -m shell -a "mv /tmp/suri.txt /home/"
+Moving directory to destination
+===============================
+ansible dev -m shell -a "mv  /tmp/ram* /tmp/suri"
+
+Copying file to destination
+===========================
+ansible dev -m shell -a "cp -rf /tmp/suri /home/"
+
+Renaming the File
+=================
+ansible dev -m shell -a "mv /tmp/chapter1 /tmp/chapter2"
+
+Deleting the File
+=================
+ansible dev -m shell -a "rm /tmp/chapte*"
+
+To View a File
+==============
+ansible dev -m shell -a "touch /tmp/original-file"
+
+Creation of Soft link
+=====================
+ansible dev -m shell -a "ln -s /tmp/original-file /home/softlink-file" -b
+
+Creation of Hard-Link file
+==========================
+ansible dev -m shell -a "ln  /tmp/hardfile-original /home/hardlink-file" -b
+
+Grepping a string from a file
+=============================
+ansible dev -m shell -a "grep -i hello /home/softlink-file"
