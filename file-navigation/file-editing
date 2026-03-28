@@ -1,0 +1,25 @@
+lineinfile (To add a line in file)
+==================================
+ansible dev -m lineinfile -a " path=/tmp/original-file line='i am learning ansible'"
+NOTE: By Default the line is added at the bottom
+
+To write below any specific line
+=================================
+ansible dev -m lineinfile -a " path=/tmp/original-file insertafter='^HEllo' line='completed Docker'"
+
+To write above any specific line
+=================================
+ansible dev -m lineinfile -a " path=/tmp/original-file insertbefore='^completed' line='preparing for EX188'"
+
+
+
+Commenting a Line(replace module)
+=================================
+ansible dev -m ansible.builtin.replace -a 'path=/tmp/original-file regexp="^(commented)" replace="# \1"'
+NOTE: always use () for regexp argument
+Replacing the Entire Line
+=========================
+ansible dev -m replace -a "path=/tmp/original-file regexp='^(i am)' replace='i am starting kubernetes'"
+
+WARNING:
+-You cannot edit a specific string using any module instead replace the whole line
