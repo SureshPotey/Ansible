@@ -1,0 +1,18 @@
+Changing the File Permissions
+=============================
+ansible dev -m shell -a "chmod 777 /tmp/original-file"
+
+ansible dev -m shell -a "chmod u=rwx,g=rx,o=r /tmp/original-file"
+
+Changing the ownership and group permission
+===========================================
+ansible dev -m shell -a "chown root:root /tmp/original-file" -b
+
+Umask calculation
+=================
+- By default the umask value is 0022
+file default permission is 666
+directory default permission is 777
+
+#umask 002
+(to change the umask value)
