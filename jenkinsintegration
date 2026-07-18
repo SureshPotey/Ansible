@@ -1,0 +1,38 @@
+061059207915
+
+Account ID
+149751500834
+Account name
+pushpa-student
+poteypushpabai6789@gmail.com
+Root@123Suri
+
+Integration ansible with Jenkins
+================================
+1.ON JENKINS UI
+   - install ansible plugin
+   - in tool configure ansible (name=ansible & path=/var/lib/jenkins/.local/bin)
+2.ON JENKINS CLI
+   # su - root
+   # setfacl -R -m u:jenkins:rwx /ansible
+   # usermod -s /bin/bash jenkins
+
+  LOGIN AS JENKINS USER
+  =====================
+  # cd /ansible
+  (cd to the path where hosts& ansible.cfg files are present)
+  # python3.14 -m venv myansible
+  (to create virtual environment with myansible as environment name)
+  # . myansible/bin/activate
+  (to activate virtual environment)
+  # pip install ansible
+  (to install ansible)
+  # ansible --version
+  (to check ansible version)
+  # which ansible
+  (to get the ansible executable path)
+
+3. JOB SETTING
+  - parmeters(name=key=ENV choices=values=dev,qa, prod)
+  - to user in hostpattern $ENV
+  - remaining all i know 
