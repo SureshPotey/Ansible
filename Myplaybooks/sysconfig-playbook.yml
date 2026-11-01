@@ -1,0 +1,39 @@
+---
+- name: ansible to install syslog-nginx
+  hosts: all
+  become: true
+  tasks:
+    - block:
+        - name: Install syslog-ng
+          package:
+            name: rsyslog
+            state: present
+
+        - name: Copy syslog-ng configuration file
+          copy:
+            dest: /etc/rsyslog.conf
+            content: |
+              @version: 3.5
+              @include "scl.conf"
+
+              source s_local {
+                  system();
+                  internal();
+              };
+
+              destination d_local {
+                  file("/var/log/messages");
+              };
+
+              log {
+                  source(s_local);
+                  destination(d_local);
+              };
+      notify:
+        - restart rsyslog
+
+  handlers:
+    - name: restart rsyslog
+      service:
+        name: rsyslog
+        state: restarted
